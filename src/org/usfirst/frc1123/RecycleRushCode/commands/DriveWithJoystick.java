@@ -13,7 +13,7 @@ public class  DriveWithJoystick extends Command {
     }
 
     protected void execute() {
-    	Robot.drivetrain.takeJoystickInput(Robot.oi.getMyJoystick());
+    	Robot.drivetrain.takeTankDriveInput(Robot.oi.leftJoystick, Robot.oi.rightJoystick);
     }
 
     protected boolean isFinished() {

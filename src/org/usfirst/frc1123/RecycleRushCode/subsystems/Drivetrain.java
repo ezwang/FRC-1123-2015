@@ -23,6 +23,44 @@ public class Drivetrain extends Subsystem {
 		hDrive.set(0);
     }
     
+    public double scale(double d) {
+    	if(d >= 0) {
+    		d = Math.pow(d, 2);
+    	}
+    	else {
+    		d = -1 * Math.pow(d, 2);
+    	}
+    	
+    	return d;
+    }
+    
+    public void takeTankDriveInput(Joystick left, Joystick right) {
+    	
+    	double scalar = 0.3;
+    	
+    	double leftX = scale(left.getX());
+    	double leftY = scale(left.getY());
+    	
+    	double rightX = right.getX();
+    	double rightY = right.getY();
+    	
+
+    		
+    	if(leftY > 0.1) 
+    		leftDrive.set(leftY * scalar);
+    	
+    	if(rightY > 0.1)
+    		rightDrive.set(rightY * scalar);
+    	
+    	if(left.getTrigger() && left.getX() > 0.1) {
+    		hDrive.set(leftX);
+    	}
+    	
+    	if(right.getTrigger() && right.getX() > 0.1) {
+    		hDrive.set(rightX);
+    	}
+    }
+    
     public void takeJoystickInput(Joystick s) {
     	double x = s.getX();
     	double y = s.getY();
@@ -70,8 +108,6 @@ public class Drivetrain extends Subsystem {
 //    	}
     	
     	System.out.println(s.getTwist());
-    	
-    	System.out.println("IM NEW!");
    	}
 }
 
