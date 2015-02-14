@@ -42,6 +42,7 @@ public class OI {
 
 
     public OI() {
+    	System.out.println("Test!");
         myJoystick = new Joystick(0);
         
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
