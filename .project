@@ -26,4 +26,10 @@
 			</matcher>
 		</filter>
 	</filteredResources>
+	<variableList>
+		<variable>
+			<name>WPILib</name>
+			<value>file:/C:/Users/Shantanu/wpilib</value>
+		</variable>
+	</variableList>
 </projectDescription>
