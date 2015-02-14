@@ -1,0 +1,5 @@
+Power Board connects to RoboRIO through CAN
+
+When motor at risk of tripping breaker, slow the motor - send message to subsystem to slow down
+	Exponential / something decay?
+	Subsystem multiplier variable for each motor, can set decay value

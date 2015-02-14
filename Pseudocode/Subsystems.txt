@@ -1,0 +1,10 @@
+Subsystems
+	Drive Train
+		takeJoystickInput
+		mainDrive
+		sidewaysDrive
+	Claw
+		closeClaw
+		openClaw
+
+

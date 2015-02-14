@@ -1,0 +1,34 @@
+goForward(magnitude):
+	magnitude power to side motors, no power to H drive motors
+	square (?) of joystick value sent to motors - gradual acceleration
+
+goReverse(magnitude):
+	-magnitude power to side motors, no power to H drive motors
+	square (?) of joystick value sent to motors - gradual acceleration
+
+goLeft(magnitude):
+	// drop H wheels (if traction wheels)
+	no power to side motors, -magnitude (?) power to H drive motors
+	square (?) of joystick value sent to motors - gradual acceleration
+
+goRight(magnitude):
+	// drop H wheels (if traction wheels)
+	no power to side motors, magnitude (?) power to H drive motors
+	square (?) of joystick value sent to motors - gradual acceleration
+
+
+driveMainAxis(distance):
+	if(distance > 0): goForward(1.0) for t seconds (t determined by some coefficient)
+	if(distance < 0): goBackward(1.0) for t seconds (t determined by some coefficient)
+
+driveHAxis(distance):
+	if(distance > 0): goRight(1.0) for t seconds (t determined by some coefficient)
+	if(distance < 0): goLeft(1.0) for t seconds (t determined by some coefficient)
+
+this method assumes the H drive works as expected (perfect horizontal movement). if it does not, we may have to power the drive motors to move perfectly sideways. This presents its own difficulties as the amount of power required from the drive motor may be determined by the weight the robot is carrying. 
+joystickDrive:
+	get joystick angle and magnitude
+	if(angle > 315 || angle < 45) --> goRight(magnitude)
+	if(45 < angle < 135) --> goForward(magnitude)
+	if(135 < angle < 225) --> goLeft(magnitude)
+	if(225 < angle < 315) --> goBackward(magnitude)

@@ -1,0 +1,45 @@
+closeClaw:
+	pull piston in, keep pressure on piston to keep claw closed
+
+openClaw:
+	push piston out, keep pressure on piston to keep claw closed
+
+NOTE: for closeClaw and openClaw, current command must persist until other one called. So isFinished() must always return false.
+
+clawUp(int n):
+	look up  current level of claw
+	get distance to level n
+	wind winch to bring claw up to level n for t seconds
+		compute time required and power required
+		activate winch
+		PID loop?
+	check height with sensor, use sensors for fine control as time approaches t 
+		time to get to general area (lower bound)
+		PID / sensor to get accurate height
+	allow for human override
+	limit switch at top and bottom 
+
+clawDown(n):
+	get current level of claw
+	get distance to level n
+	wind winch to bring claw up to level n for t seconds
+	check height with sensor, use sensors for fine control as time approaches t
+	allow for human override
+	limit switch at top and bottom 
+
+pickUpNewBin(n): // must input which level to pick up from... may want to leave 1st bin on the floor for chute
+	if holdingBins:
+		placeOnStack(numBins)
+	else:
+		openClaw
+	Precise align robot with new bin
+	clawDown to level n
+	closeClaw
+	clawUp to level n + 0.5? -- bins off the floor
+
+
+placeOnStack(n):
+	clawUp to n + 1 + 0.5
+	Precise align with existing stack
+	clawDown to n + 1
+	clawOpen, release held stack

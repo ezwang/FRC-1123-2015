@@ -1,0 +1,8 @@
+Claw
+	1 CIM, 1 Piston
+Wings
+	4 Mini-CIMs, 2 Pistons
+Drivetrain
+	2 CIMs, 1 Mini-CIM
+
+3 CIMs, 5 Mini-CIMs, 3 Piston
