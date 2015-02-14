@@ -31,6 +31,16 @@ public class Drivetrain extends Subsystem {
     	else {
     		hDrive.set(magnitude);
     	}
+    	
+    	if(s.getTwist() < 0) {
+    		leftDrive.set(1);
+    		rightDrive.set(-1);
+    	}
+    	
+    	if(s.getTwist() > 0) {
+    		leftDrive.set(-1);
+    		rightDrive.set(1);
+    	}
     }
 }
 
