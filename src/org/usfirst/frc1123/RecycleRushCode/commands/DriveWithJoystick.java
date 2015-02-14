@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 
 public class  DriveWithJoystick extends Command {
-	
-	
 
     public DriveWithJoystick() {
         requires(Robot.drivetrain);
@@ -24,7 +22,6 @@ public class  DriveWithJoystick extends Command {
 
     protected void end() {
     }
-
 
     protected void interrupted() {
     }

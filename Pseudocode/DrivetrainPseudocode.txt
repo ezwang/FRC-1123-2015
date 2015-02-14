@@ -16,7 +16,6 @@ goRight(magnitude):
 	no power to side motors, magnitude (?) power to H drive motors
 	square (?) of joystick value sent to motors - gradual acceleration
 
-
 driveMainAxis(distance):
 	if(distance > 0): goForward(1.0) for t seconds (t determined by some coefficient)
 	if(distance < 0): goBackward(1.0) for t seconds (t determined by some coefficient)
