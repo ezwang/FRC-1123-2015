@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc1123.RecycleRushCode.commands.*;
 import org.usfirst.frc1123.RecycleRushCode.subsystems.*;
+import org.usfirst.frc1123.RecycleRushCode.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.CANTalon;;
 public class Drivetrain extends Subsystem {
     CANTalon leftDrive = RobotMap.drivetrainLeftDrive;
     CANTalon rightDrive = RobotMap.drivetrainRightDrive;
-    CANTalon hDrive = RobotMap.drivetrainHDrive;
+//    CANTalon hDrive = RobotMap.drivetrainHDrive;
 
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());
@@ -20,7 +20,7 @@ public class Drivetrain extends Subsystem {
     public void stop() {
 		leftDrive.set(0);
 		rightDrive.set(0);
-		hDrive.set(0);
+//		hDrive.set(0);
     }
     
     public double scale(double d) {
@@ -52,13 +52,13 @@ public class Drivetrain extends Subsystem {
     	if(rightY > 0.1)
     		rightDrive.set(rightY * scalar);
     	
-    	if(left.getTrigger() && left.getX() > 0.1) {
-    		hDrive.set(leftX);
-    	}
-    	
-    	if(right.getTrigger() && right.getX() > 0.1) {
-    		hDrive.set(rightX);
-    	}
+//    	if(left.getTrigger() && left.getX() > 0.1) {
+//    		hDrive.set(leftX);
+//    	}
+//    	
+//    	if(right.getTrigger() && right.getX() > 0.1) {
+//    		hDrive.set(rightX);
+//    	}
     }
     
     public void takeJoystickInput(Joystick s) {
@@ -104,7 +104,7 @@ public class Drivetrain extends Subsystem {
     	
     	
 //    	else {
-    		hDrive.set(x);
+//    		hDrive.set(x);
 //    	}
     	
     	System.out.println(s.getTwist());
