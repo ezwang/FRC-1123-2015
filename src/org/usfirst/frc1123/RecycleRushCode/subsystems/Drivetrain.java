@@ -9,107 +9,94 @@ import edu.wpi.first.wpilibj.CANTalon;;
 
 
 public class Drivetrain extends Subsystem {
-    CANTalon leftDrive = RobotMap.drivetrainLeftDrive;
-    CANTalon rightDrive = RobotMap.drivetrainRightDrive;
-    CANTalon hDrive = RobotMap.drivetrainHDrive;
+	CANTalon leftDrive = RobotMap.drivetrainLeftDrive;
+	CANTalon rightDrive = RobotMap.drivetrainRightDrive;
 
-    public void initDefaultCommand() {
-    	setDefaultCommand(new DriveWithJoystick());
-    }
-    
-    public void stop() {
+	public void initDefaultCommand() {
+		setDefaultCommand(new DriveWithJoystick());
+	}
+
+	public void stop() {
 		leftDrive.set(0);
 		rightDrive.set(0);
-		hDrive.set(0);
+	}
+	
+	public void takeXBoxInput(Joystick stick) {
+		double leftY = stick.getRawAxis(1);
+		double rightY = stick.getRawAxis(5);
+		
+		if(Math.abs(leftY) > 0.1) 
+    		leftDrive.set(leftY);
+    	else
+    		leftDrive.set(0);
+    	
+    	if(Math.abs(rightY) > 0.1)
+    		rightDrive.set(rightY);
+    	else
+    		rightDrive.set(0);
+    	
+		
+	}
+	
+    public void takeTankDriveInput(Joystick left, Joystick right) {
+    	    	
+    	double leftY = left.getY();
+    	
+    	double rightY = right.getY();
+    	
+
+    		
+    	if(Math.abs(leftY) > 0.1) 
+    		leftDrive.set(leftY*Math.abs(leftY));
+    	else
+    		leftDrive.set(0);
+    	
+    	if(Math.abs(rightY) > 0.1)
+    		rightDrive.set(rightY*Math.abs(rightY));
+    	else
+    		rightDrive.set(0);
+    	
     }
-    
-    public void takeJoystickInput(Joystick s) {
-    	double x = s.getX();
-    	double y = s.getY();
-    	double twist = s.getTwist();
-    	
-//    	if(Math.abs(y) < 0.1 && Math.abs(x) < 0.1 && Math.abs(twist) < 0.1) {
-//    		stop();
-//    	}
-    	
-    	
-//       	if(Math.abs(y) >= Math.abs(x)) {
-       		
-       		double leftVal = (-1 * y + twist) * 0.3;
-       		double rightVal = (y + twist) * 0.3;
-       		       		
-       		if(rightVal > 1) {
-       			leftVal /= rightVal;
-       			rightVal = 1;
-       		}
-       		
-       		else if(leftVal > 1) {
-       			rightVal /= leftVal;
-       			leftVal = 1;
-       		}
-       		
-       		else if(rightVal < -1) {
-       			leftVal /= Math.abs(rightVal);
-       			rightVal = -1;
-       		}
-       		
-       		else if(leftVal < -1) {
-       			rightVal /= Math.abs(leftVal);
-       			leftVal = -1;
-       		}
-       		
-       		leftDrive.set(leftVal);
-       		rightDrive.set(rightVal);
-       		
-//    	}
-    	
-    	
-    	
-//    	else {
-    		hDrive.set(x);
-//    	}
-    	
-    	System.out.println(s.getTwist());
-    	
-//    	double angle = s.getDirectionRadians();
-//    	double magnitude = s.getMagnitude();
-//    	
-//    	
-//    	System.out.println(magnitude + "\t" + angle);
-//    	
-//    	double sinangle = Math.sin(angle);
-//    	double cosangle = Math.cos(angle);
-//    	
-//    	if(magnitude < 0.1) {
-//    		stop();
-//    	}
-//    	
-//    	if(Math.abs(sinangle) > Math.abs(cosangle)) {
-//    		if(cosangle > 0) {
-//    			hDrive.set(magnitude);
-//    		}
-//    		
-//    		else {
-//    			hDrive.set(-1 * magnitude);
-//    		}
-//    	}
-//
-//	
-//    	else {
-//    		
-//    		if(sinangle > 0) {
-//	    		leftDrive.set(magnitude);
-//	    		rightDrive.set(-1 * magnitude);
-//    		}
-//    		
-//    		else {
-//	    		leftDrive.set(-1 * magnitude);
-//	    		rightDrive.set(magnitude);
-//    		}
-//	    	
-//	    	
-//	    }
-   	}
+
+	public void takeJoystickInput(Joystick s) {
+		double y = s.getY();
+		double twist = s.getTwist();
+
+		double leftVal = (-1 * y + twist);
+		double rightVal = (y + twist);
+
+		if(rightVal > 1) {
+			leftVal /= rightVal;
+			rightVal = 1;
+		}
+
+		else if(leftVal > 1) {
+			rightVal /= leftVal;
+			leftVal = 1;
+		}
+
+		else if(rightVal < -1) {
+			leftVal /= Math.abs(rightVal);
+			rightVal = -1;
+		}
+
+		else if(leftVal < -1) {
+			rightVal /= Math.abs(leftVal);
+			leftVal = -1;
+		}
+
+		leftDrive.set(leftVal);
+		rightDrive.set(rightVal);
+
+		//    	}
+
+
+
+
+
+	System.out.println(s.getTwist());
+
+}
 }
 
 
