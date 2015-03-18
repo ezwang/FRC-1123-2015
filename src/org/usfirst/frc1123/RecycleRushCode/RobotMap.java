@@ -31,7 +31,7 @@ public class RobotMap {
         lifterSolenoid = new DoubleSolenoid(7, 0, 1);
         lifterSolenoidOther = new DoubleSolenoid(7, 2, 3);
         
-//        enc = new DigitalInput(3);
+//        enc = new DigitalInput(3); HELLO
         
         enccount = new Counter();
         
