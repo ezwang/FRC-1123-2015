@@ -1,5 +1,6 @@
 package org.usfirst.frc1123.RecycleRushCode.subsystems;
 
+import org.usfirst.frc1123.RecycleRushCode.Robot;
 import org.usfirst.frc1123.RecycleRushCode.RobotMap;
 import org.usfirst.frc1123.RecycleRushCode.commands.*;
 
@@ -19,7 +20,8 @@ public class Lifter extends Subsystem {
 	
 	
 //	DigitalInput enc = RobotMap.enc;
-	Counter counter = RobotMap.enccount;
+
+	Encoder encoder = RobotMap.encoder;
 	
 	int count = 0;
 
@@ -56,10 +58,7 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void getEncCount() {
-		if(counter.get() != count) {
-			System.out.println(counter.get());
-			count = counter.get();
-		}
+		Robot.oi.putString("Encoder value", encoder.get() + "");
 	}
     
 }

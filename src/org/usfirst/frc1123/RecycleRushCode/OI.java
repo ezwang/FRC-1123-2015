@@ -109,6 +109,10 @@ public class OI {
 	//    public Joystick getRightJoystick() {
 	//    	return rightJoystick;
 	//    }
+	
+	public void putString(String key, String val) {
+		SmartDashboard.putString(key,  val);
+	}
 
 }
 

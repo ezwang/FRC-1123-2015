@@ -16,10 +16,8 @@ public class RobotMap {
     
     public int hello = 4;
     
-//    public static DigitalInput enc;
     
-    public static Counter enccount; //hi
-    
+    public static Encoder encoder;
 
     public static void init() {
         drivetrainLeftDrive = new CANTalon(4);
@@ -32,13 +30,7 @@ public class RobotMap {
         
         lifterSolenoidOther = new DoubleSolenoid(7, 2, 3);
         
-//        enc = new DigitalInput(3);
-        
-        enccount = new Counter();
-        
-        enccount.setUpSource(3);
-        
-        enccount.setUpSourceEdge(true, false);
+        encoder = new Encoder(4, 5);
         
         
                 
