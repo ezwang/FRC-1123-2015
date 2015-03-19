@@ -20,43 +20,43 @@ public class Drivetrain extends Subsystem {
 		leftDrive.set(0);
 		rightDrive.set(0);
 	}
-	
+
 	public void takeXBoxInput(Joystick stick) {
 		double leftY = stick.getRawAxis(1);
 		double rightY = stick.getRawAxis(5);
-		
-		if(Math.abs(leftY) > 0.1) 
-    		leftDrive.set(leftY);
-    	else
-    		leftDrive.set(0);
-    	
-    	if(Math.abs(rightY) > 0.1)
-    		rightDrive.set(rightY);
-    	else
-    		rightDrive.set(0);
-    	
-		
-	}
-	
-    public void takeTankDriveInput(Joystick left, Joystick right) {
-    	    	
-    	double leftY = left.getY();
-    	
-    	double rightY = right.getY();
-    	
 
-    		
-    	if(Math.abs(leftY) > 0.1) 
-    		leftDrive.set(leftY*Math.abs(leftY));
-    	else
-    		leftDrive.set(0);
-    	
-    	if(Math.abs(rightY) > 0.1)
-    		rightDrive.set(rightY*Math.abs(rightY));
-    	else
-    		rightDrive.set(0);
-    	
-    }
+		if(Math.abs(leftY) > 0.1) 
+			leftDrive.set(leftY);
+		else
+			leftDrive.set(0);
+
+		if(Math.abs(rightY) > 0.1)
+			rightDrive.set(rightY);
+		else
+			rightDrive.set(0);
+
+
+	}
+
+	public void takeTankDriveInput(Joystick left, Joystick right) {
+
+		double leftY = left.getY();
+
+		double rightY = right.getY();
+
+
+
+		if(Math.abs(leftY) > 0.1) 
+			leftDrive.set(leftY*Math.abs(leftY));
+		else
+			leftDrive.set(0);
+
+		if(Math.abs(rightY) > 0.1)
+			rightDrive.set(rightY*Math.abs(rightY));
+		else
+			rightDrive.set(0);
+
+	}
 
 	public void takeJoystickInput(Joystick s) {
 		double y = s.getY();
@@ -94,9 +94,14 @@ public class Drivetrain extends Subsystem {
 
 
 
-	System.out.println(s.getTwist());
+		System.out.println(s.getTwist());
 
-}
+	}
+	
+	public void setMotorValues(double a, double b) {
+		leftDrive.set(a);
+		rightDrive.set(b);
+	}
 }
 
 

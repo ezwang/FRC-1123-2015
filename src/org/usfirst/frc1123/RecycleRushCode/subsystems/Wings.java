@@ -59,6 +59,14 @@ public class Wings extends Subsystem {
 	public CANTalon getFarRight() {
 		return farRight;
 	}
+	
+	public DoubleSolenoid getLeftSolenoid() {
+		return leftSolenoid;
+	}
+	
+	public DoubleSolenoid getRightSolenoid() {
+		return rightSolenoid;
+	}
 }
 
 

@@ -39,6 +39,9 @@ public class GetCans extends CommandGroup{
 //			Switches next to robot - horizontal bars that recycle bins will hit upon being pulled up - stop when switch pressed
 //		Postcondition: 4 wings in, 4 hooks in, all recycle bins hanging next to robot
 //
+		
+		addSequential(new RetractHooksAndWings());
+		
 //	Back up to scoring zone
 	}
 	
