@@ -16,7 +16,7 @@ public class RobotMap {
     
 //    public static DigitalInput enc;
     
-    public static Counter enccount;
+    public static Counter enccount; //hi
     
 
     public static void init() {
