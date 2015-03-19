@@ -14,6 +14,8 @@ public class RobotMap {
     public static DoubleSolenoid lifterSolenoid;
     public static DoubleSolenoid lifterSolenoidOther;
     
+    public int hello = 4;
+    
 //    public static DigitalInput enc;
     
     public static Counter enccount; //hi
