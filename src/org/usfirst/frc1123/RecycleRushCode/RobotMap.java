@@ -11,8 +11,16 @@ public class RobotMap {
     public static CANTalon drivetrainRightDrive;
     public static CANTalon lifterTalon;
     
+    public static CANTalon farLeftWing;
+    public static CANTalon leftWing;
+    public static CANTalon rightWing;
+    public static CANTalon farRightWing;
+    
     public static DoubleSolenoid lifterSolenoid;
     public static DoubleSolenoid lifterSolenoidOther;
+    
+    public static DoubleSolenoid leftWingSolenoid;
+    public static DoubleSolenoid rightWingSolenoid; 
     
 //    public static DigitalInput enc;
     
@@ -28,8 +36,17 @@ public class RobotMap {
         
         lifterTalon = new CANTalon(3);
         
+        farLeftWing = new CANTalon(5);
+        leftWing = new CANTalon(6);
+        rightWing = new CANTalon(7);
+        farRightWing = new CANTalon(8);
+        
+        
         lifterSolenoid = new DoubleSolenoid(7, 0, 1);
         lifterSolenoidOther = new DoubleSolenoid(7, 2, 3);
+        
+        leftWingSolenoid = new DoubleSolenoid(7, 4, 5);
+        rightWingSolenoid = new DoubleSolenoid(7, 6, 7);
         
 //        enc = new DigitalInput(3);
         
