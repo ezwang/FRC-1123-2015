@@ -15,6 +15,8 @@ public class Wings extends Subsystem {
 	DoubleSolenoid leftSolenoid = RobotMap.leftWingSolenoid;
 	DoubleSolenoid rightSolenoid = RobotMap.rightWingSolenoid;
 	
+	//hello!
+	
 	CANTalon farLeft = RobotMap.farLeftWing;
 	CANTalon left = RobotMap.leftWing;
 	CANTalon right = RobotMap.rightWing;
