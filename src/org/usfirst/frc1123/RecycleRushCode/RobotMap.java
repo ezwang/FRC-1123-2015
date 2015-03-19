@@ -19,12 +19,11 @@ public class RobotMap {
     public static DoubleSolenoid lifterSolenoid;
     public static DoubleSolenoid lifterSolenoidOther;
     
-    public static DoubleSolenoid leftWingSolenoid;
-    public static DoubleSolenoid rightWingSolenoid; 
+    public int hello = 4;
     
 //    public static DigitalInput enc;
     
-    public static Counter enccount;
+    public static Counter enccount; //hi
     
 
     public static void init() {
@@ -44,9 +43,6 @@ public class RobotMap {
         
         lifterSolenoid = new DoubleSolenoid(7, 0, 1);
         lifterSolenoidOther = new DoubleSolenoid(7, 2, 3);
-        
-        leftWingSolenoid = new DoubleSolenoid(7, 4, 5);
-        rightWingSolenoid = new DoubleSolenoid(7, 6, 7);
         
 //        enc = new DigitalInput(3);
         
