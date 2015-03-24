@@ -4,6 +4,9 @@ import org.usfirst.frc1123.RecycleRushCode.commands.*;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.NetworkButton;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
 
@@ -55,6 +58,23 @@ public class OI {
 
 	public Button open;
 	public Button close;
+	
+	public Button back;
+	public SendableChooser chooser;
+	
+	public NetworkButton softopen;
+	public NetworkButton softclose;
+	public NetworkButton softup;
+	public NetworkButton softdown;
+	
+	public NetworkButton resetEncoder;
+	
+	public SendableChooser moveToLevel;
+	
+	public NetworkButton doMove;
+	
+	public int curLevel = 2;
+	
 
 	public OI() {
 		//        leftJoystick = new Joystick(0);
@@ -74,31 +94,108 @@ public class OI {
 
 		up = new JoystickButton(xBoxStick, 4);
 		down = new JoystickButton(xBoxStick, 1);
+		back = new JoystickButton(xBoxStick, 6);
 		
 		up.whenPressed(new MoveLifterUp());
-		up.whenReleased(new StopLifter());
-
-		down.whenPressed(new MoveLifterDown());
-		down.whenReleased(new StopLifter());
+		up.whenReleased(new MoveLifterWithTriggers());
 		
+		back.whenPressed(new ExtractRobot());
+//		back.whenReleased(new DriveWithJoystick());
+		
+		
+		softup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		softup.whenPressed(new MoveLifterUp());
+		softup.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("Move Up", softup);
+		
+		softopen = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		softopen.whenPressed(new OpenClaw());
+		softopen.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("Open Claw", softopen);
+		
+		softdown = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		softdown.whenPressed(new MoveLifterDown());
+		softdown.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("Move Down", softdown);
+		
+		softclose = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		softclose.whenPressed(new CloseClaw());
+		softclose.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("Close Claw", softclose);
+		
+		resetEncoder = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		resetEncoder.whenPressed(new SetToZero());
+		resetEncoder.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("Reset Encoder", resetEncoder);	
+		
+//		SmartDashboard.putInt("Claw Level", curLevel);
+		
+//		levelup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+//		levelup.whenPressed(new SetTargetLevel());
+//		SmartDashboard.putData("Increase Level", levelup);
+		
+		moveToLevel = new SendableChooser();
+		moveToLevel.addDefault("Level 1", 200);
+		moveToLevel.addObject("Level 2", 400);
+		moveToLevel.addObject("Level 3", 600);
+		moveToLevel.addObject("Level 4", 800);
+		
+		
+		SmartDashboard.putData("Move to Level 2", moveToLevel);
+		
+		doMove = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		doMove.whenPressed(new MoveToLevel());
+		doMove.whenReleased(new MoveLifterWithTriggers());
+		SmartDashboard.putData("GO", doMove);
+
+		
+		
+		
+//		NetworkTable.getTable("SmartDashboard").putDouble("Pi", 3.14159);
+		
+//		NetworkTable table = NetworkTable.getTable("SmartDashboard");
+		
+//		System.out.println(table.getString("Talon SRX Encoder"));
+		
+//		softopen = new NetworkButton(SmartDashboard., field)
+
+		
+		
+		down.whenPressed(new MoveLifterDown());
+		down.whenReleased(new MoveLifterWithTriggers()); 
+				
 		open = new JoystickButton(xBoxStick, 3);		
 		close = new JoystickButton(xBoxStick, 2);
 		
 		open.whenPressed(new OpenClaw());
-		open.whenReleased(new StopClaw());
+		open.whenReleased(new MoveLifterWithTriggers());
 		
 		close.whenPressed(new CloseClaw());
-		close.whenReleased(new StopClaw());
+		close.whenReleased(new MoveLifterWithTriggers());
+		
+//		SmartDashboard.putDouble("Tank Pressure", RobotMap.pressure.getVoltage());
+		
+//		NetworkButton b = new NetworkButton(SmartDashboard, field)
+		
+//		chooser = new SendableChooser();
+//		
+//
+//			
+//		
+//		chooser.addDefault("A", "a");
+//		chooser.addObject("B", "b");
+
 		
 		
+//		SmartDashboard.putData("MyChooser", chooser);
+
+				
+
+//		SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
+//
+//		SmartDashboard.putData("DriveWithJoystick", new DriveWithJoystick());
 		
 		
-
-
-
-		SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-
-		SmartDashboard.putData("DriveWithJoystick", new DriveWithJoystick());
 
 	}
 

@@ -3,9 +3,15 @@ package org.usfirst.frc1123.RecycleRushCode;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc1123.RecycleRushCode.commands.*;
 import org.usfirst.frc1123.RecycleRushCode.subsystems.*;
+
+import edu.wpi.first.wpilibj.CameraServer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,6 +27,11 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static Drivetrain drivetrain;
     public static Lifter lifter;
+    
+    public static CameraServer server;
+//    public static CameraServer server2;
+    
+    
 
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +41,8 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         drivetrain = new Drivetrain();
         lifter = new Lifter();
+        
+        RobotMap.lifterTalon.setPosition(0.0);
 
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -37,9 +50,33 @@ public class Robot extends IterativeRobot {
         // pointers. Bad news. Don't move it.
         oi = new OI();
 
+        server = CameraServer.getInstance();
+        server.setQuality(1);
+//        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture("cam0");
+        
+        
+        
+//        server2 = CameraServer.getInstance();
+//        server2.setQuality(1);
+//        server.startAutomaticCapture("cam0");
+//        server.startAutomaticCapture("cam1");
+
+        
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
-
+        SmartDashboard.putData(Scheduler.getInstance());
+        
+//        Command openClaw = new OpenClaw();
+//        
+//        SmartDashboard.putData(openClaw);
+        
+        
+        
+        SmartDashboard.putData((Subsystem) lifter);
+        SmartDashboard.putData((Subsystem) drivetrain);
+        
+        
     }
 
     /**
@@ -63,6 +100,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -82,6 +120,16 @@ public class Robot extends IterativeRobot {
 //        if(RobotMap.enc.get()) {
 //        	System.out.println("Spun!");
 //        }
+//        
+//        if(Robot.oi.chooser.equals("A")) {
+//        	server.startAutomaticCapture("cam0");
+//        	server.
+//        }
+//        else {
+//        	server.startAutomaticCapture("cam1");
+//        }
+        
+//        System.out.println("CurLevel: " + Robot.oi.curLevel);
     }
 
     /**

@@ -21,6 +21,7 @@ public class MoveLifterUp extends Command {
     }
 
     protected void end() {
+    	Robot.lifter.stop();
     } 
 
     protected void interrupted() {

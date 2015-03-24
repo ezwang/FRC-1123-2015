@@ -3,17 +3,19 @@ package org.usfirst.frc1123.RecycleRushCode.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 
-public class MoveLifterDown extends Command {
+public class MoveToLevel extends Command {
 
-    public MoveLifterDown() {
-        requires(Robot.lifter);
+//	int n;
+	
+    public MoveToLevel() {
+    	requires(Robot.lifter);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.lifter.moveDown();
+    	System.out.println("Moving claw to level" + Robot.oi.moveToLevel.getSelected());    	
     }
 
     protected boolean isFinished() {
@@ -21,7 +23,7 @@ public class MoveLifterDown extends Command {
     }
 
     protected void end() {
-    	Robot.lifter.stop();
+//    	Robot.lifter.stopClaw();
     } 
 
     protected void interrupted() {

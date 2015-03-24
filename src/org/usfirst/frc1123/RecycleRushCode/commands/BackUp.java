@@ -1,27 +1,31 @@
 package org.usfirst.frc1123.RecycleRushCode.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc1123.RecycleRushCode.Robot;
+import org.usfirst.frc1123.RecycleRushCode.RobotMap;
 
-public class MoveLifterDown extends Command {
+public class BackUp extends Command {
 
-    public MoveLifterDown() {
-        requires(Robot.lifter);
+    public BackUp() {
+        requires(Robot.drivetrain);
+        setTimeout(1.0);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.lifter.moveDown();
+    	Robot.lifter.open();
+    	Robot.drivetrain.back();
     }
 
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     protected void end() {
-    	Robot.lifter.stop();
+    	Robot.drivetrain.stop();
     } 
 
     protected void interrupted() {

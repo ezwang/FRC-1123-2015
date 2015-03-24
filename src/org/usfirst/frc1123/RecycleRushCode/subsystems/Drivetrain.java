@@ -21,12 +21,17 @@ public class Drivetrain extends Subsystem {
 		rightDrive.set(0);
 	}
 	
+	public void back() {
+		leftDrive.set(-0.4);
+		rightDrive.set(0.4);
+	}
+	
 	public void takeXBoxInput(Joystick stick) {
 		double leftY = stick.getRawAxis(1);
 		double rightY = stick.getRawAxis(5);
 		
 		if(Math.abs(leftY) > 0.1) 
-    		leftDrive.set(leftY);
+    		leftDrive.set(-1 * leftY);
     	else
     		leftDrive.set(0);
     	

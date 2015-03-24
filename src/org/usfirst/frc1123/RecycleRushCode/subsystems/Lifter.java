@@ -1,5 +1,7 @@
 package org.usfirst.frc1123.RecycleRushCode.subsystems;
 
+import javax.management.monitor.GaugeMonitor;
+
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 import org.usfirst.frc1123.RecycleRushCode.RobotMap;
 import org.usfirst.frc1123.RecycleRushCode.commands.*;
@@ -19,6 +21,8 @@ public class Lifter extends Subsystem {
 	
 	
 	
+	
+	
 //	DigitalInput enc = RobotMap.enc;
 
 	Encoder encoder = RobotMap.encoder;
@@ -26,7 +30,7 @@ public class Lifter extends Subsystem {
 	int count = 0;
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new StopLifter());
+		setDefaultCommand(new MoveLifterWithTriggers());
 	}
 
 	public void stop() {
@@ -43,8 +47,7 @@ public class Lifter extends Subsystem {
 	
 	public void open() {
 		lifterSolenoid.set(DoubleSolenoid.Value.kForward);
-		lifterSolenoidOther.set(DoubleSolenoid.Value.kForward);
-		
+		lifterSolenoidOther.set(DoubleSolenoid.Value.kForward);	
 	}
 	
 	public void close() {
@@ -58,7 +61,11 @@ public class Lifter extends Subsystem {
 	}
 	
 	public void getEncCount() {
-		Robot.oi.putString("Encoder value", encoder.get() + "");
+		Robot.oi.putString("New Encoder value", encoder.get() + "");
+	}
+	
+	public void moveLifter(double d) {
+		lifterTalon.set(d);
 	}
     
 }
