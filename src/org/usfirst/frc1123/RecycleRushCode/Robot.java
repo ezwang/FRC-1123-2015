@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static Drivetrain drivetrain;
     public static Lifter lifter;
+    public static Wings wings;
     
     public static CameraServer server;
 //    public static CameraServer server2;
@@ -41,6 +42,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         drivetrain = new Drivetrain();
         lifter = new Lifter();
+        wings = new Wings();
         
         RobotMap.lifterTalon.setPosition(0.0);
 

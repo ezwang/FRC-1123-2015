@@ -11,6 +11,8 @@ public class RobotMap {
     public static CANTalon drivetrainLeftDrive;
     public static CANTalon drivetrainRightDrive;
     public static CANTalon lifterTalon;
+    public static CANTalon leftWing;
+    public static CANTalon rightWing;
     
     public static DoubleSolenoid lifterSolenoid;
     public static DoubleSolenoid lifterSolenoidOther;
@@ -20,6 +22,8 @@ public class RobotMap {
 //    public static GaugeMonitor gaugeMonitor;
     
 //    public static AnalogInput pressuregauge;
+    
+    
     
     public int hello = 4;
     
@@ -34,6 +38,9 @@ public class RobotMap {
 //        LiveWindow.addActuator("Drivetrain", "RightDrive", (CANTalon) drivetrainRightDrive);
         
         lifterTalon = new CANTalon(3);
+        
+        leftWing = new CANTalon(6);
+        rightWing = new CANTalon(1);
         
         lifterTalon.reverseSensor(true);
         

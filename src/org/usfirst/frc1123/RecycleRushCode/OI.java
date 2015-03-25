@@ -60,12 +60,20 @@ public class OI {
 	public Button close;
 	
 	public Button back;
+	
+	public Button nextTote;
+	
 	public SendableChooser chooser;
 	
 	public NetworkButton softopen;
 	public NetworkButton softclose;
 	public NetworkButton softup;
 	public NetworkButton softdown;
+	
+	public NetworkButton leftup;
+	public NetworkButton leftdown;
+	public NetworkButton rightup;
+	public NetworkButton rightdown;
 	
 	public NetworkButton resetEncoder;
 	
@@ -102,6 +110,9 @@ public class OI {
 		back.whenPressed(new ExtractRobot());
 //		back.whenReleased(new DriveWithJoystick());
 		
+		nextTote = new JoystickButton(xBoxStick, 5);
+		nextTote.whenPressed(new GetNextTote());
+		
 		
 		softup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
 		softup.whenPressed(new MoveLifterUp());
@@ -122,6 +133,29 @@ public class OI {
 		softclose.whenPressed(new CloseClaw());
 		softclose.whenReleased(new MoveLifterWithTriggers());
 		SmartDashboard.putData("Close Claw", softclose);
+		
+		leftup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		leftup.whenPressed(new LeftWingUp());
+		leftup.whenReleased(new StopWings());
+		SmartDashboard.putData("Left Wing Up", leftup);
+		
+		leftdown = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		leftdown.whenPressed(new LeftWingDown());
+		leftdown.whenReleased(new StopWings());
+		SmartDashboard.putData("Left Wing Down", leftdown);
+		
+		rightup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		rightup.whenPressed(new RightWingUp());
+		rightup.whenReleased(new StopWings());
+		SmartDashboard.putData("Right Wing Up", rightup);
+		
+		rightdown = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		rightdown.whenPressed(new RightWingDown());
+		rightdown.whenReleased(new StopWings());
+		SmartDashboard.putData("Right Wing Down", rightdown);
+		
+		
+		
 		
 		resetEncoder = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
 		resetEncoder.whenPressed(new SetToZero());
