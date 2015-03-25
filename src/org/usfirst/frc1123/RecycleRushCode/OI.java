@@ -70,10 +70,14 @@ public class OI {
 	public NetworkButton softup;
 	public NetworkButton softdown;
 	
-	public NetworkButton leftup;
-	public NetworkButton leftdown;
-	public NetworkButton rightup;
-	public NetworkButton rightdown;
+	public NetworkButton innerIn;
+	public NetworkButton innerOut;
+	
+	public NetworkButton outerIn;
+	public NetworkButton outerOut;
+	
+	public NetworkButton wingsOut;
+	public NetworkButton wingsIn;
 	
 	public NetworkButton resetEncoder;
 	
@@ -134,25 +138,35 @@ public class OI {
 		softclose.whenReleased(new MoveLifterWithTriggers());
 		SmartDashboard.putData("Close Claw", softclose);
 		
-		leftup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
-		leftup.whenPressed(new LeftWingUp());
-		leftup.whenReleased(new StopWings());
-		SmartDashboard.putData("Left Wing Up", leftup);
+		innerIn = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		innerIn.whenPressed(new InnerIn());
+		innerIn.whenReleased(new StopWings());
+		SmartDashboard.putData("Inner Winch In", innerIn);
 		
-		leftdown = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
-		leftdown.whenPressed(new LeftWingDown());
-		leftdown.whenReleased(new StopWings());
-		SmartDashboard.putData("Left Wing Down", leftdown);
+		innerOut = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		innerOut.whenPressed(new InnerOut());
+		innerOut.whenReleased(new StopWings());
+		SmartDashboard.putData("Inner Winch Out", innerOut);
 		
-		rightup = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
-		rightup.whenPressed(new RightWingUp());
-		rightup.whenReleased(new StopWings());
-		SmartDashboard.putData("Right Wing Up", rightup);
+		outerIn = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		outerIn.whenPressed(new OuterIn());
+		outerIn.whenReleased(new StopWings());
+		SmartDashboard.putData("Outer Winch In", outerIn);
 		
-		rightdown = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
-		rightdown.whenPressed(new RightWingDown());
-		rightdown.whenReleased(new StopWings());
-		SmartDashboard.putData("Right Wing Down", rightdown);
+		outerOut = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		outerOut.whenPressed(new OuterOut());
+		outerOut.whenReleased(new StopWings());
+		SmartDashboard.putData("Outer Winch Out", outerOut);
+		
+		wingsOut = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		wingsOut.whenPressed(new WingsOut()); 
+		wingsOut.whenReleased(new StopWings());
+		SmartDashboard.putData("Wings Out", wingsOut);
+		
+		wingsIn = new NetworkButton(NetworkTable.getTable("SmartDashboard"), "TestField");
+		wingsIn.whenPressed(new WingsIn());
+		wingsIn.whenReleased(new StopWings());
+		SmartDashboard.putData("Wings In", wingsIn);
 		
 		
 		

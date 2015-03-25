@@ -66,7 +66,6 @@ public class Robot extends IterativeRobot {
 
         
         // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousCommand();
         SmartDashboard.putData(Scheduler.getInstance());
         
 //        Command openClaw = new OpenClaw();
@@ -79,6 +78,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData((Subsystem) drivetrain);
         
         
+        autonomousCommand = new GetCans();
+
     }
 
     /**

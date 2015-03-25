@@ -1,11 +1,13 @@
 package org.usfirst.frc1123.RecycleRushCode.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 
-public class RightWingUp extends Command {
+public class OuterIn extends Command {
 
-    public RightWingUp() {
+    public OuterIn() {
         requires(Robot.wings);
     }
 
@@ -13,7 +15,7 @@ public class RightWingUp extends Command {
     }
 
     protected void execute() {
-    	Robot.wings.rightUp();
+    	Robot.wings.outerwing.set(-1.0);
     }
 
     protected boolean isFinished() {

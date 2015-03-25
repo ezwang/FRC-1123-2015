@@ -11,11 +11,15 @@ public class RobotMap {
     public static CANTalon drivetrainLeftDrive;
     public static CANTalon drivetrainRightDrive;
     public static CANTalon lifterTalon;
-    public static CANTalon leftWing;
-    public static CANTalon rightWing;
+    
+    public static CANTalon innerWings;
+    public static CANTalon outerWings;
     
     public static DoubleSolenoid lifterSolenoid;
     public static DoubleSolenoid lifterSolenoidOther;
+    
+    public static DoubleSolenoid leftSolenoid;
+    public static DoubleSolenoid rightSolenoid;
     
 //    public static AnalogInput pressure;
     
@@ -39,8 +43,8 @@ public class RobotMap {
         
         lifterTalon = new CANTalon(3);
         
-        leftWing = new CANTalon(6);
-        rightWing = new CANTalon(1);
+        innerWings = new CANTalon(6);
+        outerWings = new CANTalon(1);
         
         lifterTalon.reverseSensor(true);
         
@@ -51,6 +55,9 @@ public class RobotMap {
         
         lifterSolenoid = new DoubleSolenoid(7, 0, 1);
         lifterSolenoidOther = new DoubleSolenoid(7, 2, 3);
+        
+        leftSolenoid = new DoubleSolenoid(7, 4, 5);
+        rightSolenoid = new DoubleSolenoid(7, 6, 7);
         
         
         encoder = new Encoder(4, 5);

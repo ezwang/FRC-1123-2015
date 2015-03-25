@@ -1,7 +1,5 @@
 package org.usfirst.frc1123.RecycleRushCode.subsystems;
 
-import javax.management.monitor.GaugeMonitor;
-
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 import org.usfirst.frc1123.RecycleRushCode.RobotMap;
 import org.usfirst.frc1123.RecycleRushCode.commands.*;

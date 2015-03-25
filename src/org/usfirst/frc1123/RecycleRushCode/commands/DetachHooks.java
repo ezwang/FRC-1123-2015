@@ -1,23 +1,26 @@
 package org.usfirst.frc1123.RecycleRushCode.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc1123.RecycleRushCode.Robot;
 
-public class LeftWingUp extends Command {
+public class DetachHooks extends Command {
 
-    public LeftWingUp() {
+    public DetachHooks() {
         requires(Robot.wings);
+        setTimeout(0.5);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.wings.leftUp();
+    	Robot.wings.innerwing.set(-0.5);
+    	Robot.wings.outerwing.set(-0.5);
     }
 
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     protected void end() {
